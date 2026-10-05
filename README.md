@@ -25,12 +25,6 @@
 | Customer segments | Households and restaurant chefs |
 | Revenue streams | Subscriptions, restaurant bulk orders, gift certificates, grow kits |
 
-## Deploy to GitHub Pages
-
-1. Put `index.html` (and this README) at the root of a repository.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save.
-4. After a minute the site is live at `https://<your-username>.github.io/<repo-name>/`.
 
 To run it locally, open `index.html` in a browser.
 
