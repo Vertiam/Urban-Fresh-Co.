@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Fresh Co. – Fresh & Local Microgreens Delivery</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#10281c;--leaf:#1f6b3f;--lime:#9bd84e;--mint:#e8f3ea;--paper:#f7fbf7;--tray:#f3a73f;--line:#cfe2d3;--muted:#55705f;--r:14px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:16px/1.55 Figtree,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit}
+button,input,select{font:inherit}
+:focus-visible{outline:3px solid var(--tray);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:rgba(247,251,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.logo{font:800 20px 'Bricolage Grotesque';text-decoration:none;margin-right:auto}
+nav a{margin-right:14px;text-decoration:none;font-weight:500;font-size:15px}
+nav a:hover{color:var(--leaf)}
+.btn{border:0;border-radius:999px;padding:10px 20px;font-weight:600;cursor:pointer;background:var(--leaf);color:#fff}
+.btn:hover{background:#17562f}
+.btn.alt{background:var(--lime);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.sm{padding:6px 14px;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:64px 0 0;overflow:hidden}
+.hero h1{font-size:clamp(36px,6vw,68px);max-width:14ch;font-weight:800}
+.hero p{max-width:46ch;margin:18px 0 26px;color:#c4dccb;font-size:18px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .grid{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:end}
+.rack{display:grid;gap:10px;padding-bottom:0}
+.shelf{background:#0b1d14;border-top:6px solid var(--tray);border-radius:6px 6px 0 0;padding:10px 12px 0;display:flex;gap:6px;align-items:flex-end;height:78px}
+.shelf i{flex:1;background:var(--lime);border-radius:50% 50% 0 0;transform-origin:bottom;animation:grow 1.4s ease-out both}
+.shelf i:nth-child(odd){background:#6fc06a}
+@keyframes grow{from{transform:scaleY(.05)}}
+@media(prefers-reduced-motion:reduce){.shelf i{animation:none}}
+.stats{display:flex;gap:28px;flex-wrap:wrap;padding:22px 0;color:#c4dccb;font-size:14px}
+.stats b{display:block;color:#fff;font-size:20px;font-family:'Bricolage Grotesque'}
+section{padding:60px 0}
+section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
+.sub{color:var(--muted);max-width:60ch;margin-bottom:24px}
+.tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.tab{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 16px;cursor:pointer;font-weight:500}
+.tab[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px}
+.card .ico{aspect-ratio:200/130;border-radius:10px;overflow:hidden;position:relative}.ico svg,.ico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card h3{font-size:20px}
+.card p{font-size:14px;color:var(--muted);flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;background:var(--mint);color:var(--leaf);border-radius:6px;padding:2px 8px;font-weight:600}
+.buy{display:flex;gap:8px;align-items:center}
+.buy select{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--line);background:#fff}
+.price{font:700 22px 'Bricolage Grotesque'}
+.price .per{font-size:14px;color:var(--muted);font-weight:500}
+.band{background:var(--mint)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+form.box,.box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input,select.f{width:100%;padding:10px;border-radius:8px;border:1.5px solid var(--line);background:#fff}
+.trace{display:flex;gap:8px}
+.trace input{flex:1}
+#traceOut{margin-top:14px;font-size:14px}
+.steps{list-style:none;padding:0;display:grid;gap:12px}
+.steps li{padding-left:18px;border-left:4px solid var(--lime)}
+.steps b{display:block}
+footer{background:var(--ink);color:#c4dccb;padding:28px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:40;box-shadow:-10px 0 40px rgba(0,0,0,.2);transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{position:static;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;height:auto;background:#fff}
+.drawer .body{flex:1;overflow:auto;padding:16px 20px}
+.drawer .foot{padding:16px 20px;border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;align-items:center}
+.row small{color:var(--muted);display:block}
+.x{background:none;border:0;cursor:pointer;font-size:18px;color:var(--muted)}
+.scrim{position:fixed;inset:0;background:rgba(16,40,28,.5);z-index:30;display:none}
+.scrim.on{display:block}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,80px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;z-index:60;transition:transform .25s}
+.toast.on{transform:translate(-50%,0)}
+.eco{background:var(--mint);border-radius:10px;padding:12px;margin:10px 0;font-size:14px}
+.badge{display:inline-block;background:var(--lime);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700}
+[hidden]{display:none!important}
+.pay{position:fixed;inset:0;background:rgba(16,40,28,.6);z-index:50;display:none;place-items:center;padding:16px}
+.pay.on{display:grid}
+.pm{background:#fff;border-radius:18px;width:min(400px,100%);max-height:94vh;overflow:auto;padding:22px}
+.demo{background:var(--tray);color:var(--ink);font-weight:700;font-size:13px;text-align:center;border-radius:8px;padding:4px;margin-bottom:14px}
+.amt{font:800 34px 'Bricolage Grotesque';margin:4px 0 14px}
+.seg{display:flex;gap:6px;margin-bottom:12px}
+.seg button{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chips button{border:1.5px solid var(--line);background:var(--mint);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:13px;font-weight:600}
+.qr{display:block;margin:6px auto 10px;width:170px;height:170px;border:1.5px solid var(--line);border-radius:8px;padding:6px}
+.pin{letter-spacing:12px;text-align:center;font-size:24px}
+.spin{width:44px;height:44px;border:5px solid var(--mint);border-top-color:var(--leaf);border-radius:50%;margin:20px auto;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.ok{width:64px;height:64px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-size:34px;margin:10px auto}
+.ctr{text-align:center}
+.err{color:#b3261e;font-size:13px;margin-top:6px;min-height:18px}
+@media(max-width:760px){.hero .grid{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top">🌱 Urban Fresh Co.</a>
+  <nav><a href="#shop">Shop</a><a href="#restaurants">Restaurants</a><a href="#trace">Traceability</a><a href="#how">How it works</a></nav>
+  <button class="btn ghost sm" id="acctBtn">My account</button>
+  <button class="btn sm" id="cartBtn">Cart (<span id="cartN">0</span>)</button>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div class="grid"><div>
+    <h1>Cut this morning. At your door by noon.</h1>
+    <p>Organic microgreens grown in vertical farms inside your city. Delivered by e-trike, packed in compostable trays.</p>
+    <div class="cta"><a class="btn alt" href="#shop">Shop microgreens</a><a class="btn ghost" style="color:#fff;border-color:#fff" href="#restaurants">Order for a restaurant</a></div>
+  </div>
+  <div class="rack" aria-hidden="true" id="rack"></div></div>
+  <div class="stats"><div><b>&lt; 8 km</b>farm to door</div><div><b>100%</b>organic seed</div><div><b>0</b>plastic clamshells</div><div><b>Batch-coded</b>every tray traceable</div></div>
+</div></div>
+
+<section id="shop"><div class="wrap">
+  <h2>What's growing now</h2>
+  <p class="sub">Choose one-time delivery or a weekly subscription and save 10%. Skip or cancel any time from your account.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="products" id="products"></div>
+</div></section>
+
+<section class="band" id="restaurants"><div class="wrap cols">
+  <div>
+    <h2>For restaurant kitchens</h2>
+    <p class="sub">Set up a standing order and we'll add your kitchen to a morning delivery route. Chefs get a personal account, tray pricing from 20 trays a week, and swap-outs when menus change.</p>
+    <div class="eco" id="chefList">No standing orders saved yet.</div>
+  </div>
+  <form class="box" id="chefForm">
+    <h3>Start a standing order</h3>
+    <label for="cName">Restaurant name</label><input id="cName" required>
+    <label for="cEmail">Chef email</label><input id="cEmail" type="email" required>
+    <label for="cVar">Variety</label>
+    <select class="f" id="cVar"></select>
+    <label for="cQty">Trays per week</label><input id="cQty" type="number" min="5" value="20" required>
+    <label for="cRoute">Delivery route</label>
+    <select class="f" id="cRoute"><option>Morning route (6–8 am)</option><option>Midday route (11 am–1 pm)</option></select>
+    <p style="margin-top:14px"><button class="btn" type="submit">Save standing order</button></p>
+  </form>
+</div></section>
+
+<section id="trace"><div class="wrap cols">
+  <div>
+    <h2>Trace your tray</h2>
+    <p class="sub">Every tray carries a batch code. Enter it (or one from your orders) to see where the seed came from and when it was cut.</p>
+    <div class="trace"><input id="traceIn" placeholder="e.g. UF-2610-4821" aria-label="Batch code"><button class="btn" id="traceBtn">Trace</button></div>
+    <div id="traceOut"></div>
+  </div>
+  <div id="how"><h2>How it works</h2><br>
+    <ol class="steps">
+      <li><b>Pick your greens</b>Single varieties, a chef's mix, a grow kit or a gift certificate.</li>
+      <li><b>Choose a delivery hub</b>Home drop-off or pick up from a local delivery hub or co-op.</li>
+      <li><b>We cut to order</b>Harvest starts at 5 am, packed in compostable trays.</li>
+      <li><b>Track your eco impact</b>Each order adds to your personal score.</li>
+    </ol></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Urban Fresh Co. – a sustainable growth model</span><span>Demo storefront. Orders are saved in this browser only.</span></div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="cartD" aria-label="Cart">
+  <header><h3>Your cart</h3><button class="x" data-close aria-label="Close cart">✕</button></header>
+  <div class="body" id="cartBody"></div>
+  <div class="foot" id="cartFoot"></div>
+</aside>
+<aside class="drawer" id="acctD" aria-label="Account">
+  <header><h3>My account</h3><button class="x" data-close aria-label="Close account">✕</button></header>
+  <div class="body" id="acctBody"></div>
+</aside>
+<div class="pay" id="payM" role="dialog" aria-modal="true" aria-label="UPI payment"><div class="pm">
+ <div class="demo">DEMO ONLY. No real payment is made.</div>
+ <div id="pStart"><b>Pay Urban Fresh Co.</b><div class="amt" id="pAmt"></div>
+  <div class="seg"><button type="button" id="mUpi" aria-pressed="true">UPI ID</button><button type="button" id="mQr" aria-pressed="false">Scan QR</button></div>
+  <div id="vUpi"><label for="upiId" style="margin-top:0">Your UPI ID</label><input id="upiId" placeholder="name@okaxis" autocomplete="off">
+   <div class="chips"><button type="button" data-sfx="@okaxis">@okaxis</button><button type="button" data-sfx="@ybl">@ybl</button><button type="button" data-sfx="@paytm">@paytm</button><button type="button" data-sfx="@oksbi">@oksbi</button></div>
+   <div class="err" id="upiErr"></div><button class="btn" style="width:100%" id="pContinue">Continue</button></div>
+  <div id="vQr" hidden><svg class="qr" id="qr" viewBox="0 0 25 25" shape-rendering="crispEdges" role="img" aria-label="Demo QR code"></svg>
+   <p class="sub" style="text-align:center;font-size:13px;margin:0 0 12px">Sample code for the demo. It can't be scanned.</p>
+   <button class="btn" style="width:100%" id="pScanned">I've scanned and paid</button></div>
+  <p style="text-align:center;margin-top:12px"><button class="x" id="pCancel" style="font-size:14px">Cancel payment</button></p></div>
+ <div id="pPin" hidden class="ctr"><b>Enter UPI PIN</b><p class="sub" style="margin:4px 0 12px;font-size:13px">Paying <span id="pAmt2"></span> from <span id="pWho"></span><br>Demo: any 4–6 digits works. Use 0000 to see a failed payment.</p>
+  <input class="pin" id="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off" aria-label="UPI PIN">
+  <div class="err" id="pinErr"></div><button class="btn" style="width:100%" id="pPay">Pay now</button></div>
+ <div id="pBusy" hidden class="ctr"><div class="spin"></div><b>Processing payment…</b><p class="sub" style="font-size:13px">Please don't close this window.</p></div>
+ <div id="pDone" hidden class="ctr"><div class="ok" aria-hidden="true">✓</div><b style="font-size:20px">Payment successful</b>
+  <p class="sub" style="margin:6px auto 4px" id="pRef"></p><button class="btn" style="width:100%;margin-top:10px" id="pFin">View my order</button></div>
+ <div id="pFail" hidden class="ctr"><div class="ok" style="background:#f6c9c5;color:#b3261e" aria-hidden="true">✕</div><b style="font-size:20px">Payment declined</b>
+  <p class="sub" style="margin:6px auto 12px">The demo bank rejected this PIN. Try again.</p><button class="btn" style="width:100%" id="pRetry">Try again</button></div>
+</div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const PRODUCTS=[
+ {id:'pea',n:'Pea shoots',c:'greens',p:180,s:'#7fbf5a',l:'#4f9e3f',sh:'round',b:'#e6f4dc',d:'Sweet, crunchy and tender. Great in salads and stir-fries.',t:['Organic','Ready in 10 days']},
+ {id:'sun',n:'Sunflower greens',c:'greens',p:180,s:'#e5ecb0',l:'#6fae3d',sh:'round',b:'#f4f6d8',d:'Nutty and juicy with a satisfying snap.',t:['Organic','Ready in 9 days']},
+ {id:'rad',n:'Red radish',c:'greens',p:200,s:'#d6336c',l:'#3f8f4a',sh:'round',b:'#fbe3ec',d:'Peppery bite and a bright magenta stem. A favourite chef garnish.',t:['Organic','Ready in 7 days']},
+ {id:'bro',n:'Broccoli sprouts',c:'greens',p:220,s:'#f1f3d0',l:'#5fae45',sh:'round',b:'#e3f2e0',d:'Mild, fresh flavour for sandwiches and smoothies.',t:['Organic','Ready in 8 days']},
+ {id:'mus',n:'Mustard greens',c:'greens',p:200,s:'#9cc86a',l:'#2f8a3c',sh:'point',b:'#e7f3d6',d:'Sharp, wasabi-like heat. Lovely on eggs and in wraps.',t:['Organic','Ready in 8 days']},
+ {id:'ama',n:'Red amaranth',c:'greens',p:230,s:'#c2185b',l:'#e0457b',sh:'round',b:'#fbe1ea',d:'Earthy and mild with deep ruby leaves. Colours up any plate.',t:['Organic','Ready in 10 days']},
+ {id:'bee',n:'Beetroot',c:'greens',p:240,s:'#b3123f',l:'#5b9f3a',sh:'point',b:'#f9dfe6',d:'Sweet and earthy with crimson stems. Great with goat cheese.',t:['Organic','Ready in 12 days']},
+ {id:'kal',n:'Baby kale',c:'greens',p:230,s:'#8fb86b',l:'#3d7a4b',sh:'point',b:'#e0eddc',d:'Tender, mildly sweet kale leaves for salads and bowls.',t:['Organic','Ready in 11 days']},
+ {id:'fen',n:'Fenugreek (methi)',c:'greens',p:190,s:'#a8d17a',l:'#4c9a3a',sh:'round',b:'#e8f4d9',d:'Pleasantly bitter and aromatic. Perfect for parathas and curries.',t:['Organic','Ready in 9 days']},
+ {id:'cor',n:'Coriander',c:'greens',p:210,s:'#7fb85a',l:'#3a8f4a',sh:'point',b:'#e3f3dc',d:'Bright, citrusy and fragrant. A fresh finish for chutneys and chaat.',t:['Organic','Ready in 14 days']},
+ {id:'bas',n:'Thai basil',c:'greens',p:260,s:'#7a4a8c',l:'#3d9a4a',sh:'round',b:'#ece3f2',d:'Anise-sweet with purple stems. Made for noodles and stir-fries.',t:['Organic','Ready in 14 days']},
+ {id:'whe',n:'Wheatgrass',c:'greens',p:170,s:'#7fcf4f',l:'#7fcf4f',sh:'blade',b:'#e7f6d8',d:'Grassy and sweet. Juice it fresh for a morning shot.',t:['Organic','Ready in 8 days']},
+ {id:'mix',n:"Chef's mix",c:'greens',p:250,mix:1,s:'#8fc65f',l:'#4f9e3f',sh:'round',b:'#e6f4dc',d:'A rotating blend of four varieties, picked by our head grower.',t:['Organic','Best seller']},
+ {id:'kit',n:'Branded grow kit',c:'kits',p:799,b:'#fdf0d8',d:'Tray, coir mat and three seed packs. Harvest on your windowsill in a week.',t:['Reusable','Includes seeds'],once:1},
+ {id:'gift',n:'Gift certificate',c:'kits',p:1000,b:'#e0f0e6',d:'Emailed instantly. Redeemable on any order.',t:['Digital'],once:1}
+];
+function art(p){
+ let sd=[...p.id].reduce((h,c)=>h*31+c.charCodeAt(0)>>>0,11);const R=()=>(sd=(sd*1664525+1013904223)>>>0)/4294967296;
+ let g=`<rect width="200" height="130" fill="${p.b}"/>`;
+ if(p.id==='kit'){g+=`<rect x="24" y="84" width="104" height="30" rx="5" fill="#8a5a33"/><rect x="28" y="80" width="96" height="9" fill="#3b2a1d"/>`;
+  for(let i=0;i<9;i++){const x=34+i*10,h=14+R()*16;g+=`<path d="M${x} 82V${82-h}" stroke="#6fb94a" stroke-width="2"/><ellipse cx="${x-3}" cy="${82-h}" rx="4.5" ry="3" fill="#4f9e3f"/><ellipse cx="${x+3}" cy="${82-h-2}" rx="4.5" ry="3" fill="#4f9e3f"/>`}
+  [['#e5a52e',138],['#d6336c',156],['#4f9e3f',174]].forEach(([c,x])=>g+=`<rect x="${x-9}" y="58" width="18" height="30" rx="2" fill="${c}"/><circle cx="${x}" cy="73" r="5" fill="#fff" opacity=".85"/>`);return g}
+ if(p.id==='gift'){g+=`<rect x="55" y="52" width="90" height="58" rx="5" fill="#1f6b3f"/><rect x="49" y="42" width="102" height="16" rx="4" fill="#2b8a52"/><rect x="94" y="42" width="12" height="68" fill="#9bd84e"/><path d="M100 42c-18-22-34-4-18 0M100 42c18-22 34-4 18 0" fill="none" stroke="#9bd84e" stroke-width="5" stroke-linecap="round"/>`;return g}
+ g+=`<rect x="14" y="94" width="172" height="26" rx="6" fill="#8a5a33"/><rect x="18" y="90" width="164" height="10" fill="#3b2a1d"/>`;
+ const mc=[['#7fbf5a','#4f9e3f'],['#d6336c','#3f8f4a'],['#e5ecb0','#6fae3d'],['#c2185b','#e0457b']];
+ for(let i=0;i<20;i++){const x=24+i*8.2,h=22+R()*40,tx=x+(R()-.5)*7,ty=92-h,[sc,lc]=p.mix?mc[i%4]:[p.s,p.l];
+  if(p.sh==='blade'){g+=`<path d="M${x} 92Q${x+(R()-.5)*10} ${92-h*.6} ${tx} ${ty-10}" stroke="${sc}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;continue}
+  g+=`<path d="M${x} 92L${tx} ${ty}" stroke="${sc}" stroke-width="1.8" stroke-linecap="round"/>`;
+  if(p.sh==='point')g+=`<path d="M${tx} ${ty}q-9-2-11-10q8 1 11 10zM${tx} ${ty}q9-2 11-10q-8 1-11 10z" fill="${lc}"/>`;
+  else g+=`<ellipse cx="${tx-4}" cy="${ty-1}" rx="5.5" ry="3.6" transform="rotate(-25 ${tx-4} ${ty-1})" fill="${lc}"/><ellipse cx="${tx+4}" cy="${ty-1}" rx="5.5" ry="3.6" transform="rotate(25 ${tx+4} ${ty-1})" fill="${lc}"/>`}
+ return g}
+const HUBS=['Home delivery (e-trike)','Anna Nagar hub','Adyar co-op market','T. Nagar hub','Velachery hub'];
+const DISC=.10;
+const $=s=>document.querySelector(s);
+const store={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let cart=store.get('uf_cart',[]),orders=store.get('uf_orders',[]),chefs=store.get('uf_chefs',[]),filter='all';
+const money=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2200)};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// hero rack
+$('#rack').innerHTML=[0,1,2].map(()=>'<div class="shelf">'+Array.from({length:14},(_,i)=>`<i style="height:${30+Math.random()*60}%;animation-delay:${i*60}ms"></i>`).join('')+'</div>').join('');
+
+// shop
+$('#tabs').innerHTML=[['all','All'],['greens','Microgreens'],['kits','Kits & gifts']].map(([k,l])=>`<button class="tab" data-f="${k}" aria-pressed="${k==='all'}">${l}</button>`).join('');
+$('#tabs').onclick=e=>{const b=e.target.closest('.tab');if(!b)return;filter=b.dataset.f;document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-pressed',t===b));renderProducts()};
+function renderProducts(){
+ $('#products').innerHTML=PRODUCTS.filter(p=>filter==='all'||p.c===filter).map(p=>`
+ <div class="card"><div class="ico"><svg viewBox="0 0 200 130" role="img" aria-label="${p.n} illustration">${art(p)}</svg><img src="images/${p.id}.jpg" alt="${p.n}" loading="lazy" onerror="this.remove()"></div><h3>${p.n}</h3>
+ <div class="tags">${p.t.map(t=>`<span class="tag">${t}</span>`).join('')}</div><p>${p.d}</p>
+ <div class="price">${money(p.p)} <span class="per">per tray</span></div>
+ <div class="buy">${p.once?'<select disabled aria-label="Plan"><option>One-time</option></select>':`<select id="pl-${p.id}" aria-label="Plan for ${p.n}"><option value="once">One-time</option><option value="weekly">Weekly · save 10%</option></select>`}
+ <button class="btn sm" data-add="${p.id}">Add</button></div></div>`).join('');
+}
+$('#products').onclick=e=>{const id=e.target.dataset.add;if(!id)return;
+ const p=PRODUCTS.find(x=>x.id===id),plan=p.once?'once':$('#pl-'+id).value;
+ const ex=cart.find(i=>i.id===id&&i.plan===plan);ex?ex.q++:cart.push({id,plan,q:1});saveCart();toast(p.n+' added to cart')};
+$('#cVar').innerHTML=PRODUCTS.filter(p=>p.c==='greens').map(p=>`<option>${p.n}</option>`).join('');
+
+// cart
+const unit=i=>{const p=PRODUCTS.find(x=>x.id===i.id);return i.plan==='weekly'?p.p*(1-DISC):p.p};
+const total=()=>cart.reduce((s,i)=>s+unit(i)*i.q,0);
+function saveCart(){store.set('uf_cart',cart);renderCart()}
+function renderCart(){
+ $('#cartN').textContent=cart.reduce((s,i)=>s+i.q,0);
+ if(!cart.length){$('#cartBody').innerHTML='<p class="sub">Your cart is empty. Add a tray from the shop to get started.</p>';$('#cartFoot').innerHTML='';return}
+ $('#cartBody').innerHTML=cart.map((i,k)=>{const p=PRODUCTS.find(x=>x.id===i.id);return `<div class="row"><div><b>${p.n}</b><small>${i.plan==='weekly'?'Weekly subscription':'One-time'} · ${money(unit(i))} each</small></div>
+ <div><button class="x" data-q="${k}:-1" aria-label="Fewer">−</button> ${i.q} <button class="x" data-q="${k}:1" aria-label="More">+</button> <button class="x" data-q="${k}:0" aria-label="Remove">✕</button></div></div>`}).join('');
+ const km=cart.reduce((s,i)=>s+i.q*12,0);
+ $('#cartFoot').innerHTML=`<div class="eco">Eco impact of this order: about ${km} food-km avoided and ${cart.reduce((s,i)=>s+i.q,0)} plastic clamshells saved.</div>
+ <form id="co"><label for="coHub">Delivery or pick-up</label><select class="f" id="coHub">${HUBS.map(h=>`<option>${h}</option>`).join('')}</select>
+ <label for="coName">Name</label><input id="coName" required value="${esc(store.get('uf_name',''))}">
+ <label for="coPhone">Phone</label><input id="coPhone" required inputmode="tel" value="${esc(store.get('uf_phone',''))}">
+ <label for="coAddr" id="coAddrL">Delivery address</label><input id="coAddr" required autocomplete="street-address">
+ <p style="margin:14px 0;font:700 20px 'Bricolage Grotesque'">Total ${money(total())}</p>
+ <button class="btn" style="width:100%" type="submit">Place order</button></form>`;
+}
+$('#cartBody').onclick=e=>{const q=e.target.dataset.q;if(!q)return;const[k,d]=q.split(':').map(Number);
+ if(d===0)cart.splice(k,1);else{cart[k].q+=d;if(cart[k].q<1)cart.splice(k,1)}saveCart()};
+let pending=null,upi='';
+$('#cartFoot').onchange=e=>{if(e.target.id!=='coHub')return;const h=e.target.value.startsWith('Home');$('#coAddr').required=h;$('#coAddrL').textContent=h?'Delivery address':'Address (not needed for pick-up)'};
+$('#cartFoot').onsubmit=e=>{e.preventDefault();
+ const hub=$('#coHub').value,addr=$('#coAddr').value.trim();
+ if(hub.startsWith('Home')&&!addr){toast('Enter an address for home delivery');return}
+ const name=$('#coName').value.trim(),phone=$('#coPhone').value.trim();store.set('uf_name',name);store.set('uf_phone',phone);
+ pending={name,phone,hub,addr};openPay()};
+function placeOrder(txn){
+ const items=cart.map(i=>({...i,name:PRODUCTS.find(p=>p.id===i.id).name||PRODUCTS.find(p=>p.id===i.id).n,price:unit(i)}));
+ const d=new Date().toISOString();
+ const o={id:'UF-'+d.slice(2,4)+d.slice(5,7)+'-'+Math.floor(1000+Math.random()*9000),date:d,...pending,items,total:total(),txn,upi,
+  km:cart.reduce((s,i)=>s+i.q*12,0),trays:cart.reduce((s,i)=>s+i.q,0),subs:items.filter(i=>i.plan==='weekly').map(i=>({name:i.name,q:i.q,state:'active'}))};
+ orders.unshift(o);store.set('uf_orders',orders);cart=[];saveCart();return o}
+const pv=v=>['pStart','pPin','pBusy','pDone','pFail'].forEach(id=>$('#'+id).hidden=id!==v);
+function openPay(){$('#pAmt').textContent=$('#pAmt2').textContent=money(total());$('#upiErr').textContent=$('#pinErr').textContent='';$('#pin').value='';pv('pStart');$('#payM').classList.add('on');$('#upiId').focus()}
+function closePay(){$('#payM').classList.remove('on')}
+function method(m){$('#mUpi').setAttribute('aria-pressed',m==='upi');$('#mQr').setAttribute('aria-pressed',m==='qr');$('#vUpi').hidden=m!=='upi';$('#vQr').hidden=m!=='qr'}
+$('#mUpi').onclick=()=>method('upi');$('#mQr').onclick=()=>method('qr');
+document.querySelectorAll('[data-sfx]').forEach(b=>b.onclick=()=>{const i=$('#upiId');i.value=i.value.split('@')[0]+b.dataset.sfx;i.focus()});
+// fake QR
+(function(){let sd=42;const R=()=>(sd=(sd*1664525+1013904223)>>>0)/4294967296;let h='<rect width="25" height="25" fill="#fff"/>';
+ const fin=(x,y)=>h+=`<rect x="${x}" y="${y}" width="7" height="7" fill="#10281c"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#10281c"/>`;
+ for(let y=0;y<25;y++)for(let x=0;x<25;x++){if((x<8&&y<8)||(x>16&&y<8)||(x<8&&y>16))continue;if(R()>.52)h+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#10281c"/>`}
+ fin(0,0);fin(18,0);fin(0,18);$('#qr').innerHTML=h})();
+const startPin=who=>{upi=who;$('#pWho').textContent=who;$('#pin').value='';$('#pinErr').textContent='';pv('pPin');$('#pin').focus()};
+$('#pContinue').onclick=()=>{const v=$('#upiId').value.trim();
+ if(!/^[\w.\-]{2,}@[a-z]{2,}$/i.test(v)){$('#upiErr').textContent='Enter a valid UPI ID, like name@okaxis.';return}startPin(v)};
+$('#upiId').onkeydown=e=>{if(e.key==='Enter')$('#pContinue').click()};
+$('#pScanned').onclick=()=>startPin('UPI QR scan');
+function pay(){const p=$('#pin').value;
+ if(!/^\d{4,6}$/.test(p)){$('#pinErr').textContent='Enter a 4 to 6 digit PIN.';return}
+ if(p==='0000'){pv('pFail');return}
+ pv('pBusy');setTimeout(()=>{const txn=String(Date.now()).slice(-12);const o=placeOrder(txn);
+  $('#pRef').innerHTML=`Order <b>${o.id}</b><br>UPI ref ${txn}<br>${money(o.total)} paid (demo)`;pv('pDone')},1600)}
+$('#pPay').onclick=pay;$('#pin').onkeydown=e=>{if(e.key==='Enter')pay()};
+$('#pRetry').onclick=()=>startPin(upi);
+$('#pCancel').onclick=closePay;
+$('#pFin').onclick=()=>{closePay();closeAll();renderAcct();open_('acctD')};
+
+// drawers
+const open_=id=>{closeAll();$('#'+id).classList.add('open');$('#scrim').classList.add('on')};
+const closeAll=()=>{document.querySelectorAll('.drawer').forEach(d=>d.classList.remove('open'));$('#scrim').classList.remove('on')};
+$('#cartBtn').onclick=()=>open_('cartD');$('#acctBtn').onclick=()=>{renderAcct();open_('acctD')};
+$('#scrim').onclick=closeAll;document.querySelectorAll('[data-close]').forEach(b=>b.onclick=closeAll);
+document.onkeydown=e=>{if(e.key==='Escape'){closePay();closeAll()}};
+
+// account
+function renderAcct(){
+ const km=orders.reduce((s,o)=>s+o.km,0),tr=orders.reduce((s,o)=>s+o.trays,0);
+ const score=Math.min(100,Math.round(km/6+tr*2));
+ const subs=orders.flatMap((o,oi)=>o.subs.map((s,si)=>({...s,oi,si,oid:o.id})));
+ $('#acctBody').innerHTML=`<div class="eco"><b>Eco-impact score: ${score}/100</b><br>${km} food-km avoided · ${tr} trays delivered · ${tr} plastic clamshells saved</div>
+ <h3 style="margin:18px 0 6px">Subscriptions</h3>${subs.length?subs.map(s=>`<div class="row"><div><b>${esc(s.name)} × ${s.q}</b><small>From ${s.oid} · ${s.state}</small></div>
+ <div><button class="btn ghost sm" data-sub="${s.oi}:${s.si}:${s.state==='active'?'paused':'active'}">${s.state==='active'?'Pause':'Resume'}</button> <button class="x" data-sub="${s.oi}:${s.si}:cancel" aria-label="Cancel subscription">✕</button></div></div>`).join(''):'<p class="sub">No subscriptions yet. Pick Weekly on any tray to start one.</p>'}
+ <h3 style="margin:18px 0 6px">Order history</h3>${orders.length?orders.map(o=>`<div class="row"><div><b>${o.id}</b> <span class="badge">${o.trays} trays</span><small>${new Date(o.date).toLocaleDateString()} · ${esc(o.hub)} · ${money(o.total)}${o.txn?' · UPI ref '+o.txn:''}</small></div><button class="btn ghost sm" data-trace="${o.id}">Trace</button></div>`).join(''):'<p class="sub">No orders yet.</p>'}
+ ${orders.length?'<p style="margin-top:20px"><button class="btn ghost sm" id="clr">Clear saved data</button></p>':''}`;
+}
+$('#acctBody').onclick=e=>{const t=e.target;
+ if(t.dataset.sub){const[oi,si,a]=t.dataset.sub.split(':');if(a==='cancel')orders[oi].subs.splice(si,1);else orders[oi].subs[si].state=a;store.set('uf_orders',orders);renderAcct()}
+ if(t.dataset.trace){closeAll();$('#traceIn').value=t.dataset.trace;doTrace();$('#trace').scrollIntoView()}
+ if(t.id==='clr'&&confirm('Delete all saved orders, cart and standing orders from this browser?')){orders=[];chefs=[];cart=[];['uf_orders','uf_chefs','uf_cart'].forEach(k=>localStorage.removeItem(k));saveCart();renderAcct();renderChefs()}};
+
+// chefs
+function renderChefs(){$('#chefList').innerHTML=chefs.length?chefs.map(c=>`<b>${esc(c.name)}</b>: ${c.qty} trays/week of ${esc(c.v)}, ${esc(c.route)}`).join('<br>'):'No standing orders saved yet.'}
+$('#chefForm').onsubmit=e=>{e.preventDefault();chefs.push({name:$('#cName').value.trim(),email:$('#cEmail').value.trim(),v:$('#cVar').value,qty:+$('#cQty').value,route:$('#cRoute').value});store.set('uf_chefs',chefs);renderChefs();e.target.reset();toast('Standing order saved')};
+
+// traceability
+const hash=s=>[...s].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7);
+function doTrace(){
+ const v=$('#traceIn').value.trim().toUpperCase(),out=$('#traceOut');
+ if(!/^UF-\d{4}-\d{4}$/.test(v)){out.innerHTML='Enter a code in the format UF-2610-4821. You\'ll find it on your tray label and in your order history.';return}
+ const h=hash(v),seeds=['Nilgiri Organic Seeds','Deccan Seed Collective','Western Ghats Seed Co.'],farms=['Rack 3, Perungudi farm','Rack 1, Guindy farm','Rack 5, Ambattur farm'];
+ out.innerHTML=`<div class="box"><b>Batch ${v}</b><br>Seed lot: ${seeds[h%3]}, lot #${1000+h%9000} (certified organic)<br>Grown at: ${farms[(h>>3)%3]}<br>Sown: ${6+h%4} days before cut<br>Harvested: 5:${String(10+h%40).padStart(2,'0')} am on delivery day<br>Distance to hub: ${3+h%6} km by e-trike</div><p style="margin-top:6px;color:var(--muted);font-size:13px">Demo data generated from the code. Connect your farm records to show real batches.</p>`}
+$('#traceBtn').onclick=doTrace;$('#traceIn').onkeydown=e=>{if(e.key==='Enter')doTrace()};
+
+renderProducts();renderCart();renderChefs();
+</script>
+</body>
+</html>
